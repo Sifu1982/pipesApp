@@ -1,4 +1,5 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -17,7 +18,13 @@ registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRouterModule, SharedModule, VentasModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRouterModule,
+    SharedModule,
+    VentasModule,
+  ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }], // Inyectar idioma español como valor por defecto en la App
   bootstrap: [AppComponent],
 })

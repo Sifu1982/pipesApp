@@ -1,1 +1,106 @@
-<p>no-comunes works!</p>
+<div class="text-layout">
+    <h1>Pipes no tan comunes</h1>
+    <p>
+        Pipes incluídos en Angular - Usualmente en el Common Module.
+    </p>
+</div>
+
+
+<div class="grid">
+
+    <div class="md:col-6 col-12">
+        <p-fieldset [collapsed]="true" legend="i18nSelectPipe" [toggleable]="true">
+            <a target="blank" href="https://angular.io/api/common/I18nSelectPipe" style="color: lightsalmon;">(Documentación)</a>
+            <p>
+                Saludos {{ nombre }}, es un placer {{ genero | i18nSelect: invitacionMapa }} a nuestro evento.
+            </p>
+            <!-- pRipple da el efecto al botón, hay que importarlo en el módulo de PrimeNG -->
+            <button 
+                pButton 
+                pRipple
+                class="p-button-help" 
+                label="Cambiar persona" 
+                (click)="cambiarCliente()">
+            </button>
+        </p-fieldset>
+    </div>
+
+    <div class="md:col-6 col-12">
+        <p-fieldset [collapsed]="true" legend="i18nPluralPipe" [toggleable]="true">
+            <a target="blank" href="https://angular.io/api/common/I18nPluralPipe" style="color: lightsalmon;">(Documentación)</a>
+            <p>
+                Actualmente {{ clientes.length | i18nPlural: clientesMapa }}
+            </p>
+            <button 
+                pButton
+                pRipple
+                class="p-button-danger"
+                label="Borrar cliente"
+                (click)="borrarCliente()">
+            </button>
+        </p-fieldset>
+    </div>
+
+    <div class="md:col-6 col-12">
+        <p-fieldset [collapsed]="true" legend="Slice Pipe" [toggleable]="true">
+            <a target="blank" href="https://angular.io/api/common/SlicePipe" style="color: lightsalmon;">(Documentación)</a>
+            
+                <b>Original</b>
+                <!-- <pre></pre> es para que se vea lo de dentro tipo código -->
+                <pre> {{ clientes }}</pre>
+
+                <b>slice:0:2</b>
+                <!-- slice:0:2 significa que coge de la posición 0 a la 2, excluyendo la 2 -->
+                <pre> {{ clientes | slice:0:2 }}</pre>
+                
+                <b>slice:1:2</b>
+                <pre> {{ clientes | slice:1:2 }}</pre>
+
+                <b>slice:1:3</b>
+                <pre> {{ clientes | slice:1:3 }}</pre>
+
+                <b>slice:3:3</b>
+                <pre> {{ clientes | slice:3:3 }}</pre>
+
+                <b>slice:0:3</b>
+                <pre> {{ nombre | slice:0:3 }}</pre>
+
+        </p-fieldset>
+    </div>
+
+    <div class="md:col-6 col-12">
+        <p-fieldset [collapsed]="true" legend="KeyValue Pipe" [toggleable]="true">
+            <a target="blank" href="https://angular.io/api/common/KeyValuePipe" style="color: lightsalmon;">(Documentación)</a>
+            
+            <ul>
+                <li *ngFor="let item of persona | keyvalue">
+                   <b> {{ item.key | titlecase }}: </b> {{ item.value }}
+                </li>
+            </ul>
+
+        </p-fieldset>
+    </div>
+
+    <div class="md:col-6 col-12">
+        <p-fieldset [collapsed]="true" legend="Json Pipe" [toggleable]="true">
+            <a target="blank" href="https://angular.io/api/common/JsonPipe" style="color: lightsalmon;">(Documentación)</a>
+            
+            <pre>{{ heroes | json }}</pre>
+
+        </p-fieldset>
+    </div>
+
+    <div class="md:col-6 col-12">
+        <p-fieldset  legend="Async Pipe" [toggleable]="true">
+            <a target="blank" href="https://angular.io/api/common/AsyncPipe" style="color: lightsalmon;">(Documentación)</a>
+            
+            <pre *ngIf="!(valorPromesa | async)">Resolviendo promesa </pre>
+            <pre>{{ valorPromesa | async }}</pre>
+
+            <pre>{{ miObservable | async }}</pre>
+
+
+        </p-fieldset>
+    </div>
+
+</div>
