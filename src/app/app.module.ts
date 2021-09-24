@@ -8,15 +8,17 @@ import { AppRouterModule } from './app-router.module';
 import { SharedModule } from './shared/shared.module';
 import { VentasModule } from './ventas/ventas.module';
 
-// Cambiar el locale de la app a español general -> he elegido /es en la siguiente línea de código
+// Registrar el locale de la app a español y francés general -> he elegido /es y /fr en las siguientes líneas de código
 import localeEs from '@angular/common/locales/es';
+import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs);
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRouterModule, SharedModule, VentasModule],
-  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }], // Inyectar idioma español como valor por defecto en la App
   bootstrap: [AppComponent],
 })
 export class AppModule {}
