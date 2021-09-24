@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { interval } from 'rxjs';
   templateUrl: './no-comunes.component.html',
   styles: [],
 })
-export class NoComunesComponent {
+export class NoComunesComponent implements OnInit {
   // i18nSelect
   nombre: string = 'David';
   genero: string = 'masculino';
@@ -62,11 +62,29 @@ export class NoComunesComponent {
   ];
 
   //async Pipe
+  time: number = 4;
   valorPromesa = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve('Tenemos data de promesa!!!');
-    }, 4000);
+    }, this.time * 1000);
   });
 
   miObservable = interval(1000); // 0,1,2,3,4,5,6...
+
+  //Contador negativo para "adornar" el Async Pipe
+  contadorNegativo: number = this.time;
+  ngOnInit() {
+    this.countDown(this.contadorNegativo);
+  }
+
+  countDown(initialNumber: number) {
+    let interval = setInterval(() => {
+      initialNumber--;
+      console.log(initialNumber);
+      this.contadorNegativo = initialNumber;
+      if (initialNumber === 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
+  }
 }

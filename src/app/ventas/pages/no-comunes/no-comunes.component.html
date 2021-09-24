@@ -94,10 +94,10 @@
         <p-fieldset  legend="Async Pipe" [toggleable]="true">
             <a target="blank" href="https://angular.io/api/common/AsyncPipe" style="color: lightsalmon;">(Documentación)</a>
             
-            <pre *ngIf="!(valorPromesa | async)">Resolviendo promesa </pre>
+            <pre *ngIf="!(valorPromesa | async)">Resolviendo promesa en... "<strong style="color: lightsalmon; font-size: x-large;">  {{ contadorNegativo }}  </strong>"</pre>
             <pre>{{ valorPromesa | async }}</pre>
 
-            <pre>{{ miObservable | async }}</pre>
+            <pre>miObservable | async: {{ miObservable | async }}</pre>
 
 
         </p-fieldset>
